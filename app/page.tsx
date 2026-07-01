@@ -17,11 +17,11 @@ const SLIDES = [
   {
     id: "otobus",
     cls: "slide-otobus",
-    pill: "OTOBÜS KİRALAMA",
-    title: ["Güvenli,", "Konforlu,", <em key="em">Zamanında.</em>],
-    sub: "Şehirlerarası hat seferleri, kurumsal personel servisi, düğün & organizasyon ve okul gezileri için lisanslı araç filosu.",
-    cta: "Fiyat Teklifi Al",
-    href: "/iletisim?servis=otobus#teklif",
+    pill: "SAYOL TURİZM",
+    title: ["Şehirlerarası", "Otobüs", <em key="em">Bileti.</em>],
+    sub: "Sayol Turizm ile şehirlerarası seyahatinizi konforlu ve güvenli yapın. Hemen aramak için tıklayın.",
+    cta: "Otobüs Bileti Satın Al",
+    href: "tel:+905307267810",
     color: "blue",
   },
   {
@@ -83,10 +83,9 @@ const SERVICES = [
 ];
 
 const STATS = [
-  { n: 500, suffix: "+", label: "Mutlu Müşteri", cls: "orange" },
-  { n: 12,  suffix: "+", label: "Yıllık Deneyim", cls: "blue" },
-  { n: 50,  suffix: "+", label: "Araç Filosu", cls: "gold" },
-  { n: 7,   suffix: "/24", label: "Kesintisiz Hizmet", cls: "dark" },
+  { n: 12,  suffix: "+", label: "Yıllık Deneyim", cls: "orange" },
+  { n: 50,  suffix: "+", label: "Araç Filosu", cls: "blue" },
+  { n: 7,   suffix: "/24", label: "Kesintisiz Hizmet", cls: "gold" },
 ];
 
 const WHY = [
@@ -106,7 +105,7 @@ const ARROW = (
 export default function HomePage() {
   const [current, setCurrent] = useState(0);
   const [progress, setProgress] = useState(false);
-  const [counts, setCounts] = useState([0, 0, 0, 0]);
+  const [counts, setCounts] = useState([0, 0, 0]);
   const [counted, setCounted] = useState(false);
   const statsRef = useRef<HTMLDivElement>(null);
   const revealRefs = useRef<HTMLElement[]>([]);
@@ -141,7 +140,7 @@ export default function HomePage() {
     const obs = new IntersectionObserver(([e]) => {
       if (e.isIntersecting && !counted) {
         setCounted(true);
-        const targets = [500, 12, 50, 7];
+        const targets = [12, 50, 7];
         targets.forEach((t, i) => {
           let cur = 0;
           const step = t / 50;
@@ -302,11 +301,7 @@ export default function HomePage() {
                 ref={(el) => ref(el, i * 0.1)}
               >
                 <div className="stat-num">
-                  {i === 3 ? (
-                    <>{counts[i]}<span className="stat-plus">{s.suffix}</span></>
-                  ) : (
-                    <>{counts[i]}<span className="stat-plus">{s.suffix}</span></>
-                  )}
+                  <>{counts[i]}<span className="stat-plus">{s.suffix}</span></>
                 </div>
                 <div className="stat-lbl">{s.label}</div>
               </div>
