@@ -71,6 +71,22 @@ a { text-decoration: none; color: inherit; }
   line-height: 1;
 }
 .nav-logo span { color: var(--orange); }
+.nav-logo-img-wrap {
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 0 0 2px var(--orange), 0 4px 16px rgba(249,115,22,0.35);
+  overflow: hidden;
+  flex-shrink: 0;
+  transition: box-shadow 0.25s, transform 0.25s;
+}
+.nav-logo:hover .nav-logo-img-wrap {
+  box-shadow: 0 0 0 3px var(--orange), 0 6px 24px rgba(249,115,22,0.55);
+  transform: scale(1.06);
+}
+.nav-logo-img {
+  display: block;
+  object-fit: cover;
+}
 .nav-links { display: flex; align-items: center; gap: 2px; }
 .nav-link {
   padding: 8px 16px; font-size: 0.72rem; font-weight: 700;

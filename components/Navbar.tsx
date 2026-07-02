@@ -1,12 +1,12 @@
 "use client";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const LINKS = [
   { href: "/", label: "Kurumsal", icon: "🏢" },
   { href: "/#hizmetler", label: "Hizmetler", icon: "🚐" },
   { href: "/hakkimizda", label: "Hakkımızda", icon: "ℹ️" },
-  { href: "/belgelerimiz", label: "Belgeler", icon: "📄" },
   { href: "/iletisim", label: "İletişim", icon: "📞" },
 ];
 
@@ -59,7 +59,17 @@ export default function Navbar() {
               }} />
             </button>
 
-            <Link href="/" className="nav-logo" style={{ textDecoration: "none" }}>
+            <Link href="/" className="nav-logo" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
+              <span className="nav-logo-img-wrap">
+                <Image
+                  src="/favico.jpeg"
+                  alt="Sayol Mobility Logo"
+                  width={50}
+                  height={50}
+                  className="nav-logo-img"
+                  priority
+                />
+              </span>
               sayol <span>mobility</span>
             </Link>
           </div>
@@ -93,7 +103,16 @@ export default function Navbar() {
       {/* ── SOL DRAWER MENÜ ── */}
       <aside className={`nav-drawer${menu ? " open" : ""}`}>
         <div className="drawer-header">
-          <div className="drawer-logo">
+          <div className="drawer-logo" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <span className="nav-logo-img-wrap">
+              <Image
+                src="/favico.jpeg"
+                alt="Sayol Mobility Logo"
+                width={36}
+                height={36}
+                className="nav-logo-img"
+              />
+            </span>
             sayol <span>mobility</span>
           </div>
           <button

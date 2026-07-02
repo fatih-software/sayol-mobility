@@ -1,0 +1,3 @@
+﻿User-agent: *
+Allow: /
+Sitemap: https://sayolmobility.com/sitemap.xml

@@ -62,8 +62,8 @@ export default function IletisimClient() {
       <section style={{ background:"#0b0b18", borderTop:"1px solid rgba(255,255,255,0.06)", borderBottom:"1px solid rgba(255,255,255,0.06)", padding:"28px" }}>
         <div style={{ maxWidth:"1000px", margin:"0 auto", display:"flex", gap:"20px", justifyContent:"center", flexWrap:"wrap" }}>
           {[
-            { icon:<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l1.47-1.47a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>, label:"Telefon", val:"+90 XXX XXX XX XX" },
-            { icon:<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>, label:"E-Posta", val:"info@sayolmobility.com" },
+            { icon:<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f97316" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.69h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 10.09a16 16 0 0 0 6 6l1.47-1.47a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>, label:"Telefon", val:"+90 530 726 78 10", href:"tel:+905307267810" },
+            { icon:<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>, label:"E-Posta", val:"sayolmobilitygroup@gmail.com" },
             { icon:<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>, label:"Konum", val:"İstanbul, Türkiye" },
             { icon:<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#f59e0b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>, label:"Hizmet", val:"7/24 Kesintisiz" },
           ].map((item, i, arr) => (
@@ -71,7 +71,11 @@ export default function IletisimClient() {
               <div style={{ width:"40px", height:"40px", borderRadius:"10px", background:"rgba(255,255,255,0.04)", border:"1px solid rgba(255,255,255,0.08)", display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0 }}>{item.icon}</div>
               <div>
                 <div style={{ fontSize:"0.68rem", color:"rgba(255,255,255,0.3)", fontWeight:600, textTransform:"uppercase", letterSpacing:"0.06em" }}>{item.label}</div>
-                <div style={{ fontWeight:600, color:"rgba(255,255,255,0.75)", fontSize:"0.85rem", marginTop:"2px" }}>{item.val}</div>
+                {(item as {href?:string}).href ? (
+                  <a href={(item as {href?:string}).href} style={{ fontWeight:600, color:"rgba(255,255,255,0.75)", fontSize:"0.85rem", marginTop:"2px", display:"block", textDecoration:"none" }}>{item.val}</a>
+                ) : (
+                  <div style={{ fontWeight:600, color:"rgba(255,255,255,0.75)", fontSize:"0.85rem", marginTop:"2px" }}>{item.val}</div>
+                )}
               </div>
             </div>
           ))}
@@ -82,20 +86,65 @@ export default function IletisimClient() {
       <section id="teklif" style={{ padding:"80px 28px", background:"var(--bg)", scrollMarginTop:"70px" }}>
         <div style={{ maxWidth:"800px", margin:"0 auto" }}>
           {submitted ? (
-            <div style={{ textAlign:"center", padding:"72px 40px", background:"rgba(16,185,129,0.06)", border:"1px solid rgba(16,185,129,0.2)", borderRadius:"24px" }}>
-              <div style={{ width:"72px", height:"72px", borderRadius:"50%", background:"linear-gradient(135deg,#10b981,#059669)", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 24px", boxShadow:"0 8px 32px rgba(16,185,129,0.4)" }}>
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div style={{ textAlign:"center", padding:"72px 40px", background:"rgba(59,130,246,0.06)", border:"1px solid rgba(59,130,246,0.2)", borderRadius:"24px" }}>
+              <div style={{ width:"72px", height:"72px", borderRadius:"50%", background:"linear-gradient(135deg,#3b82f6,#1d4ed8)", display:"flex", alignItems:"center", justifyContent:"center", margin:"0 auto 24px", boxShadow:"0 8px 32px rgba(59,130,246,0.4)" }}>
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
               </div>
-              <h2 style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:"1.9rem", fontWeight:800, color:"#fff", marginBottom:"12px", letterSpacing:"-0.02em" }}>Talebiniz alındı!</h2>
-              <p style={{ color:"rgba(255,255,255,0.45)", fontSize:"0.95rem", lineHeight:1.7, marginBottom:"28px" }}>
-                Ekibimiz en geç <strong style={{ color:"#34d399" }}>2 saat</strong> içinde sizinle iletişime geçecektir.
+              <h2 style={{ fontFamily:"'Space Grotesk',sans-serif", fontSize:"1.8rem", fontWeight:800, color:"#fff", marginBottom:"12px", letterSpacing:"-0.02em" }}>
+                E-posta uygulamanıza yönlendiriliyorsunuz
+              </h2>
+              <p style={{ color:"rgba(255,255,255,0.5)", fontSize:"0.95rem", lineHeight:1.8, marginBottom:"8px" }}>
+                Tarayıcınız e-posta uygulamanızı açmaya çalışıyor. Açılan pencerede formu göndermeniz yeterli.
+              </p>
+              <p style={{ color:"rgba(255,255,255,0.3)", fontSize:"0.82rem", lineHeight:1.7, marginBottom:"28px" }}>
+                Alıcı: <strong style={{ color:"#60a5fa" }}>sayolmobilitygroup@gmail.com</strong>
               </p>
               <button onClick={() => { setSubmitted(false); setForm(INIT); }} className="btn-primary">
                 Yeni Teklif Al
               </button>
             </div>
           ) : (
-            <form onSubmit={async e => { e.preventDefault(); setLoading(true); await new Promise(r=>setTimeout(r,1400)); setLoading(false); setSubmitted(true); }}>
+            <form onSubmit={e => {
+              e.preventDefault();
+              setLoading(true);
+
+              const svcLabel = form.service ? SVC_CFG[form.service].label : "";
+              const subject = encodeURIComponent(`[Sayol Mobility] Teklif Talebi — ${svcLabel}`);
+
+              let details = "";
+              details += `Ad Soyad: ${form.name}\n`;
+              if (form.company) details += `Firma: ${form.company}\n`;
+              details += `E-Posta: ${form.email}\n`;
+              details += `Telefon: ${form.phone}\n`;
+              details += `Hizmet: ${svcLabel}\n\n`;
+
+              if (form.service === "lojistik") {
+                if (form.cargoType)   details += `Yük Tipi: ${form.cargoType}\n`;
+                if (form.cargoWeight) details += `Tahmini Ağırlık: ${form.cargoWeight}\n`;
+                if (form.origin)      details += `Yükleme Noktası: ${form.origin}\n`;
+                if (form.destination) details += `Teslimat Noktası: ${form.destination}\n`;
+              } else if (form.service === "otobus") {
+                if (form.passengerCount) details += `Yolcu Sayısı: ${form.passengerCount}\n`;
+                if (form.tripType)       details += `Seyahat Türü: ${form.tripType}\n`;
+                if (form.origin)         details += `Nereden: ${form.origin}\n`;
+                if (form.destination)    details += `Nereye: ${form.destination}\n`;
+                if (form.busDate)        details += `Seyahat Tarihi: ${form.busDate}\n`;
+              } else if (form.service === "vip") {
+                if (form.pickupLocation) details += `Alınacak Konum: ${form.pickupLocation}\n`;
+                if (form.dropLocation)   details += `Bırakılacak Konum: ${form.dropLocation}\n`;
+                if (form.vipDate)        details += `Transfer Tarihi: ${form.vipDate}\n`;
+                if (form.vipTime)        details += `Transfer Saati: ${form.vipTime}\n`;
+                if (form.passengers)     details += `Yolcu Sayısı: ${form.passengers}\n`;
+              }
+
+              if (form.notes) details += `\nEk Notlar:\n${form.notes}\n`;
+
+              const body = encodeURIComponent(details);
+              window.location.href = `mailto:sayolmobilitygroup@gmail.com?subject=${subject}&body=${body}`;
+
+              setTimeout(() => { setLoading(false); setSubmitted(true); }, 800);
+            }}>
+
 
               {/* Step 1 — Service */}
               <div style={{ marginBottom:"36px" }}>
@@ -181,7 +230,7 @@ export default function IletisimClient() {
               </button>
 
               <p style={{ textAlign:"center", color:"rgba(255,255,255,0.25)", fontSize:"0.75rem", marginTop:"12px" }}>
-                Bilgileriniz KVKK kapsamında korunur. <Link href="/belgelerimiz" style={{ color:"#f97316", textDecoration:"none" }}>Gizlilik politikası</Link>
+                Bilgileriniz KVKK kapsamında korunur. <Link href="/hakkimizda#belgeler" style={{ color:"#f97316", textDecoration:"none" }}>Gizlilik politikası</Link>
               </p>
             </form>
           )}
