@@ -59,18 +59,17 @@ export default function Navbar() {
               }} />
             </button>
 
-            <Link href="/" className="nav-logo" style={{ textDecoration: "none", display: "flex", alignItems: "center", gap: "10px" }}>
+            <Link href="/" className="nav-logo" style={{ textDecoration: "none", display: "flex", alignItems: "center" }}>
               <span className="nav-logo-img-wrap">
                 <Image
-                  src="/favico.jpeg"
+                  src="/sayollogo_horizontal.png"
                   alt="Sayol Mobility Logo"
-                  width={50}
-                  height={50}
+                  width={180}
+                  height={58}
                   className="nav-logo-img"
                   priority
                 />
               </span>
-              sayol <span>mobility</span>
             </Link>
           </div>
 
@@ -103,17 +102,16 @@ export default function Navbar() {
       {/* ── SOL DRAWER MENÜ ── */}
       <aside className={`nav-drawer${menu ? " open" : ""}`}>
         <div className="drawer-header">
-          <div className="drawer-logo" style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          <div className="drawer-logo" style={{ display: "flex", alignItems: "center" }}>
             <span className="nav-logo-img-wrap">
               <Image
-                src="/favico.jpeg"
+                src="/sayollogo_horizontal.png"
                 alt="Sayol Mobility Logo"
-                width={36}
-                height={36}
+                width={140}
+                height={45}
                 className="nav-logo-img"
               />
             </span>
-            sayol <span>mobility</span>
           </div>
           <button
             className="drawer-close"
