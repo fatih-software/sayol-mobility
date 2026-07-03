@@ -16,12 +16,16 @@ const PHONE = "tel:+905307267810";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menu, setMenu] = useState(false);
-  const [isLight, setIsLight] = useState(false);
+  const [isLight, setIsLight] = useState(true);
 
-  // Tema: localStorage'dan oku, default dark
+  // Tema: localStorage'dan oku, default light
   useEffect(() => {
     const saved = localStorage.getItem("sayol-theme");
-    if (saved === "light") {
+    if (saved === "dark") {
+      setIsLight(false);
+      document.documentElement.removeAttribute("data-theme");
+    } else {
+      // Varsayılan: light mod
       setIsLight(true);
       document.documentElement.setAttribute("data-theme", "light");
     }
