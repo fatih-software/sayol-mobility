@@ -16,6 +16,28 @@ const PHONE = "tel:+905307267810";
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menu, setMenu] = useState(false);
+  const [isLight, setIsLight] = useState(false);
+
+  // Tema: localStorage'dan oku, default dark
+  useEffect(() => {
+    const saved = localStorage.getItem("sayol-theme");
+    if (saved === "light") {
+      setIsLight(true);
+      document.documentElement.setAttribute("data-theme", "light");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = !isLight;
+    setIsLight(next);
+    if (next) {
+      document.documentElement.setAttribute("data-theme", "light");
+      localStorage.setItem("sayol-theme", "light");
+    } else {
+      document.documentElement.removeAttribute("data-theme");
+      localStorage.setItem("sayol-theme", "dark");
+    }
+  };
 
   useEffect(() => {
     const h = () => setScrolled(window.scrollY > 30);
@@ -82,8 +104,24 @@ export default function Navbar() {
             ))}
           </nav>
 
-          {/* Sağ: Teklif Al */}
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+          {/* Sağ: Theme Toggle + Teklif Al */}
+          <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+            {/* Theme Toggle Switch */}
+            <button
+              id="theme-toggle-btn"
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={isLight ? "Karanlık moda geç" : "Aydınlık moda geç"}
+              title={isLight ? "Karanlık mod" : "Aydınlık mod"}
+            >
+              <span className="theme-toggle-track">
+                <span className="theme-toggle-thumb">
+                  <span className="theme-toggle-icon-moon">🌙</span>
+                  <span className="theme-toggle-icon-sun">☀️</span>
+                </span>
+              </span>
+            </button>
+
             <Link href="/iletisim#teklif" className="nav-cta">
               Teklif Al
             </Link>
@@ -142,6 +180,25 @@ export default function Navbar() {
           <Link href="/iletisim#teklif" className="drawer-cta" onClick={() => setMenu(false)}>
             Teklif Al
           </Link>
+
+          {/* Tema Toggle (Mobil) */}
+          <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "10px 0 0" }}>
+            <span style={{ fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.08em", color: "var(--th-drawer-link)", textTransform: "uppercase" }}>
+              {isLight ? "☀️ Aydınlık Mod" : "🌙 Karanlık Mod"}
+            </span>
+            <button
+              className="theme-toggle"
+              onClick={toggleTheme}
+              aria-label={isLight ? "Karanlık moda geç" : "Aydınlık moda geç"}
+            >
+              <span className="theme-toggle-track">
+                <span className="theme-toggle-thumb">
+                  <span className="theme-toggle-icon-moon">🌙</span>
+                  <span className="theme-toggle-icon-sun">☀️</span>
+                </span>
+              </span>
+            </button>
+          </div>
 
           <div className="drawer-contact">
             <div className="drawer-contact-label">7/24 DESTEK</div>
