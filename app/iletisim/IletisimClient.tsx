@@ -39,7 +39,7 @@ export default function IletisimClient() {
   const cfg = form.service ? SVC_CFG[form.service] : null;
 
   const label = (txt: string) => (
-    <label style={{ display: "block", fontSize: "0.78rem", fontWeight: 600, color: "rgba(255,255,255,0.5)", marginBottom: "6px", letterSpacing: "0.04em", textTransform: "uppercase" }}>{txt}</label>
+    <label className="form-label">{txt}</label>
   );
   const input = (props: React.InputHTMLAttributes<HTMLInputElement>) => (
     <input className="form-field" {...props} />
@@ -276,23 +276,23 @@ export default function IletisimClient() {
 
               {/* Step 1 — Service */}
               <div style={{ marginBottom: "36px" }}>
-                <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, color: "#fff", fontSize: "1rem", marginBottom: "16px" }}>
+                <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, color: "var(--th-form-step-text)", fontSize: "1rem", marginBottom: "16px" }}>
                   <span style={{ color: "#f97316", marginRight: "8px" }}>01</span> {t("Hizmet seçin", "Select a service")}
                 </div>
                 <div className="grid-3">
                   {(Object.entries(SVC_CFG) as [SK, typeof SVC_CFG.lojistik][]).map(([key, c]) => (
                     <button key={key} type="button" onClick={() => set("service", key)}
-                      style={{ padding: "22px 16px", border: `2px solid ${form.service === key ? c.color : "rgba(255,255,255,0.08)"}`, borderRadius: "14px", background: form.service === key ? c.bg : "rgba(255,255,255,0.02)", cursor: "pointer", textAlign: "left", transition: "all 0.2s", transform: form.service === key ? "translateY(-2px)" : "none", boxShadow: form.service === key ? `0 8px 28px ${c.color}20` : "none" }}>
+                      style={{ padding: "22px 16px", border: `2px solid ${form.service === key ? c.color : "var(--th-form-border)"}`, borderRadius: "14px", background: form.service === key ? c.bg : "var(--th-form-section-bg)", cursor: "pointer", textAlign: "left", transition: "all 0.2s", transform: form.service === key ? "translateY(-2px)" : "none", boxShadow: form.service === key ? `0 8px 28px ${c.color}20` : "none" }}>
                       <div style={{ fontSize: "1.5rem", marginBottom: "10px" }}>{c.emoji}</div>
-                      <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, color: form.service === key ? c.color : "rgba(255,255,255,0.6)", fontSize: "0.9rem", lineHeight: 1.3 }}>{c.label}</div>
+                      <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, color: form.service === key ? c.color : "var(--th-form-step-secondary)", fontSize: "0.9rem", lineHeight: 1.3 }}>{c.label}</div>
                     </button>
                   ))}
                 </div>
               </div>
 
               {/* Step 2 — Contact */}
-              <div style={{ background: "rgba(255,255,255,0.02)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: "16px", padding: "28px", marginBottom: "20px" }}>
-                <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, color: "#fff", fontSize: "1rem", marginBottom: "20px" }}>
+              <div style={{ background: "var(--th-form-section-bg)", border: "1px solid var(--th-form-section-border)", borderRadius: "16px", padding: "28px", marginBottom: "20px" }}>
+                <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, color: "var(--th-form-step-text)", fontSize: "1rem", marginBottom: "20px" }}>
                   <span style={{ color: "#f97316", marginRight: "8px" }}>02</span> {t("İletişim bilgileriniz", "Your contact information")}
                 </div>
                 <div className="grid-2">
@@ -306,10 +306,10 @@ export default function IletisimClient() {
               {/* Step 3 — Service Fields */}
               {form.service && cfg && (
                 <div style={{ background: cfg.bg, border: `1.5px solid ${cfg.border}`, borderRadius: "16px", padding: "28px", marginBottom: "20px", transition: "all 0.3s" }}>
-                  <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, color: "#fff", fontSize: "1rem", marginBottom: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
+                  <div style={{ fontFamily: "'Space Grotesk',sans-serif", fontWeight: 700, color: "var(--th-form-step-text)", fontSize: "1rem", marginBottom: "20px", display: "flex", alignItems: "center", gap: "10px" }}>
                     <span style={{ color: "#f97316" }}>03</span>
                     <span>{cfg.emoji}</span>
-                    {cfg.label} {t("detayları", "details")}
+                    <span style={{ color: "var(--th-form-step-text)" }}>{cfg.label} {t("detayları", "details")}</span>
                   </div>
 
                   {form.service === "lojistik" && (

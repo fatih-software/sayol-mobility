@@ -56,6 +56,11 @@
   --th-form-border: rgba(255,255,255,0.08);
   --th-form-color: #fff;
   --th-form-placeholder: rgba(255,255,255,0.3);
+  --th-form-label: rgba(255,255,255,0.5);
+  --th-form-section-bg: rgba(255,255,255,0.02);
+  --th-form-section-border: rgba(255,255,255,0.07);
+  --th-form-step-text: #fff;
+  --th-form-step-secondary: rgba(255,255,255,0.4);
   --th-cert-bg: rgba(255,255,255,0.02);
   --th-cert-border: rgba(255,255,255,0.06);
   --th-ticket-modal-bg: #0d0d0d;
@@ -87,10 +92,15 @@
   --th-svc-feature: rgba(15,15,15,0.65);
   --th-svc-border: rgba(0,0,0,0.06);
   --th-mesh-bg: #f8f8fc;
-  --th-form-bg: rgba(0,0,0,0.03);
-  --th-form-border: rgba(0,0,0,0.12);
+  --th-form-bg: rgba(0,0,0,0.04);
+  --th-form-border: rgba(0,0,0,0.15);
   --th-form-color: #0d0d0d;
-  --th-form-placeholder: rgba(15,15,15,0.35);
+  --th-form-placeholder: rgba(15,15,15,0.4);
+  --th-form-label: rgba(15,15,15,0.55);
+  --th-form-section-bg: rgba(0,0,0,0.03);
+  --th-form-section-border: rgba(0,0,0,0.1);
+  --th-form-step-text: #0d0d0d;
+  --th-form-step-secondary: rgba(15,15,15,0.5);
   --th-cert-bg: rgba(0,0,0,0.02);
   --th-cert-border: rgba(0,0,0,0.08);
   --th-ticket-modal-bg: #ffffff;
@@ -726,6 +736,15 @@ a { text-decoration: none; color: inherit; }
 .form-field option {
   background: var(--th-mesh-bg);
   color: var(--th-form-color);
+}
+.form-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--th-form-label);
+  margin-bottom: 6px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 
 /* ══ RESPONSIVE GRID HELPERS ══ */
